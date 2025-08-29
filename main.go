@@ -1,13 +1,25 @@
 package main
 
 import (
-	"togo/cmd"
-	"togo/internal/storage"
-	"togo/internal/task/service"
+	"fmt"
+	"health-service/internal/handler"
+	"log"
+	"net/http"
 )
 
 func main() {
-	store := &storage.JSONStorage{File: "tasks.json"}
-	service.InitStore(store)
-	cmd.Execute()
+	mux := http.NewServeMux()
+	mux.HandleFunc("GET /ping", handler.PingHandler)
+	mux.HandleFunc("GET /health", handler.HealthHandler)
+
+	server := &http.Server{
+		Addr:    ":8080",
+		Handler: mux,
+	}
+
+	fmt.Println("🚀 Server started on :8080")
+	if err := server.ListenAndServe(); err != nil {
+		log.Fatal(err)
+	}
+
 }
