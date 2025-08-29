@@ -1,0 +1,5 @@
+### Проверка ping
+GET http://localhost:8080/ping
+
+### Проверка health ручки
+GET http://localhost:8080/health
