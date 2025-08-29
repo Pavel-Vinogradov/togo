@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"togo/internal/task"
+	"togo/internal/task/service"
 
 	"github.com/spf13/cobra"
 )
@@ -14,7 +14,7 @@ var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Добавить новую задачу",
 	Run: func(cmd *cobra.Command, args []string) {
-		t := task.Create(addTitle, addDesc)
+		t := service.Create(addTitle, addDesc)
 		fmt.Printf("Задача создана: #%d %s\n", t.ID, t.Title)
 	},
 }

@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"togo/internal/task"
+	"togo/internal/task/service"
 
 	"github.com/spf13/cobra"
 )
@@ -13,7 +13,7 @@ var deleteCmd = &cobra.Command{
 	Use:   "delete",
 	Short: "Удалить задачу",
 	Run: func(cmd *cobra.Command, args []string) {
-		if task.Delete(id) {
+		if service.Delete(id) {
 			fmt.Printf("Задача удалена: #%d\n", id)
 		} else {
 			fmt.Printf("Задача с ID %d не найдена\n", id)

@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"togo/internal/task"
+	"togo/internal/task/service"
 
 	"github.com/spf13/cobra"
 )
@@ -16,7 +16,7 @@ var updateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Обновить задачу",
 	Run: func(cmd *cobra.Command, args []string) {
-		if task.Update(updID, updTitle, updDesc, updStatus) {
+		if service.Update(updID, updTitle, updDesc, updStatus) {
 			fmt.Println("Задача обновлена")
 		} else {
 			fmt.Println("Задача не найдена")

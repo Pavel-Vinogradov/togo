@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"togo/internal/task"
+	"togo/internal/task/service"
 
 	"github.com/spf13/cobra"
 )
@@ -11,7 +11,7 @@ var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "Показать все задачи",
 	Run: func(cmd *cobra.Command, args []string) {
-		tasks := task.List()
+		tasks := service.List()
 		if len(tasks) == 0 {
 			fmt.Println("Нет задач")
 			return

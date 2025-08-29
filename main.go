@@ -2,10 +2,12 @@ package main
 
 import (
 	"togo/cmd"
-	"togo/internal/task"
+	"togo/internal/storage"
+	"togo/internal/task/service"
 )
 
 func main() {
-	task.LoadFromFile()
+	store := &storage.JSONStorage{File: "tasks.json"}
+	service.InitStore(store)
 	cmd.Execute()
 }
